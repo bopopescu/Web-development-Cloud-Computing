@@ -6,3 +6,4 @@ from app import SignIn
 from app import SignUp
 from app import HomePage
 from app import LogOut
+from app import ImgDetail

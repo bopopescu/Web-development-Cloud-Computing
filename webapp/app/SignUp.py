@@ -1,5 +1,20 @@
-from flask import render_template, url_for, request, redirect, session
+from flask import render_template, url_for, request, redirect, session,g
 from app import webapp
+import mysql.connector
+from app import config
+
+
+def connect_to_database():
+    return mysql.connector.connect(user=config.db_config['user'], 
+                                   password=config.db_config['password'],
+                                   host=config.db_config['host'],
+                                   database=config.db_config['database'])
+
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = connect_to_database()
+    return db
 
 @webapp.route("/signup", methods = ["GET","POST"])
 def SignUp():
@@ -32,17 +47,30 @@ def SignUpSubmit():
     if "email" in request.form:
         if request.form["email"] == "":
             error += "Please enter the email address.\n"
-    session["email"] = request.form["email"]
     
     if "password" in request.form and "com_password" in request.form:
         if request.form["password"] == "" or request.form["com_password"] == "":
             error += "Please enter the password or password comfirm.\n"
         elif request.form["password"] != request.form["com_password"]:
-            error += "password doesn't match the comfirm password.\n"        
+            error += "password doesn't match the comfirm password.\n"
+    session["password"] = request.form["password"]
     
     if error != "":
         session["error"] = error
         return redirect(url_for("SignUp"))
     else:
         session['authenticated'] = True
-        return redirect(url_for("HomePage"))
+        
+
+    cnx = get_db()
+    cursor = cnx.cursor()
+
+    query = ''' INSERT INTO userinfo (user_name, user_email, user_password)
+                       VALUES (%s,%s,%s)
+    '''
+    
+    cursor.execute(query,(session["username"],request.form["email"],request.form["password"]))
+    cnx.commit()
+
+    return redirect(url_for("HomePage"))
+    

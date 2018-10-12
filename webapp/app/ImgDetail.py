@@ -1,14 +1,16 @@
 from flask import render_template, url_for, request, redirect, session
 from app import webapp
 
-@webapp.route("/homepage/detail")
-def ImgDetail():
-    title = None
-    images = [None,None,None,None]
-    if "original_img_path" in request.form:
-        title = request.form["original_img_path"]
-        images[0] = request.form["original_img_path"]
-        images[1] = "1_" + request.form["original_img_path"]
-        images[2] = "2_" + request.form["original_img_path"]
-        images[3] = "3_" + request.form["original_img_path"]
-    return render_template("imgdetail",title = title, images = images)
+testImage = ["background1.jpg","background2.jpg","background3.jpg"]
+
+@webapp.route("/homepage/detail/<imgId>",methods = ["GET"])
+def ImgDetail(imgId):
+    title = "Imager"
+    if session["authenticated"]:
+        if "username" in session:
+            title = session["username"]
+        # get images from localserver   
+        return render_template("imgdetail.html",title = title,images = testImage)
+    else:
+        session["error"] = "unauthenticated log In"
+        return redirect(url_for("SignIn"))

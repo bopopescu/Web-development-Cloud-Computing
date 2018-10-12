@@ -5,7 +5,7 @@ test_image = ["background1.jpg","background2.jpg","background3.jpg"]
 
 @webapp.route("/homepage")
 def HomePage():
-    title = "Default User"
+    title = "Imager"
     if session["authenticated"]:
         if "username" in session:
             title = session["username"]

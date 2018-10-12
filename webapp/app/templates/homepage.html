@@ -4,11 +4,12 @@
     </head>
     
     <body>
+        <div style="width:50%; float:left;">{{title}}'s homepage</div>
         <div style="text-align:right"><a href="{{url_for('LogOut')}}">log Out</a></div>        
         <hr style="border-style:inset; border-width:2px;">
-        {% for img in images %}
-            <a href="url_for('ImgDetail')">
-                <img width='150px' height="100px" src="{{ url_for('static', filename = img) }}">
+        {% for imgId in images %}
+            <a href="{{url_for('ImgDetail',imgId = imgId)}}">
+                <img width='150px' height="100px" src="{{ url_for('static', filename = imgId) }}">
             </a>
         {% endfor %}
     </body>
