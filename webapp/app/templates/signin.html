@@ -1,9 +1,9 @@
 <html>
     <head>
-        <title>ImageBay</title>
+        <title>{{title}} - Sign In</title>
         <style>
             .bgimg {
-                    background-image: url("./background_images/background2.jpg");
+                    background-image: "{{ image }}";
                     background-repeat: no-repeat;
                     background-size: 100% 100%;
                 }
@@ -11,16 +11,18 @@
     </head>
     
     <body>
-        <div style="width:50%; float:left;"><a href="./welcome.html">Home Page</a></div>
-        <div style="text-align:right;width:50%; float:right;"><a href="./signin.html">Sign In</a> or <a href="./signup.html">Sign Up</a></div>        
+        <div style="width:50%; float:left;"><a href="{{url_for('Welcome')}}">ImageBay</a></div>
+        <div style="text-align:right;width:50%; float:right;"><a href="{{url_for('SignIn')}}">Sign In</a> or <a href="{{url_for('SignUp')}}">Sign Up</a></div>        
         <hr style="border-style:inset; border-width:2px;">
         <div class="bgimg">
-        <br><br><br><br><br><br>
-        <form>
+        <br><br><br>
+        <div style = "text-align: center;">{{ error if error != None else " " }}</div>
+        <br><br>
+        <form method="POST" action="/signin_submit">
             <fieldset style="background-color:#ffffff; margin-left:450px; margin-right:450px;">
                 <legend style="font:100">Sign In</legend>
                 User Name:<br>
-                <input type="test" name="username" size="35"> <br>
+                <input type="text" name="username" size="35" value="{{username if username != None}}"> <br>
                 Password:<br>
                 <input type="password" name="password" size="35"><br><br>
                 <div style="text-align: center"><input type="submit" name="submit" value="Log In"><br></div>
