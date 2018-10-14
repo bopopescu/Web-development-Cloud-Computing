@@ -1,20 +1,16 @@
 from flask import render_template, url_for, request, redirect, session,g
 from app import webapp
-import mysql.connector
-from app import config
+from app import sql
+import hashlib
+import base64
+import os
 
-
-def connect_to_database():
-    return mysql.connector.connect(user=config.db_config['user'], 
-                                   password=config.db_config['password'],
-                                   host=config.db_config['host'],
-                                   database=config.db_config['database'])
-
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = connect_to_database()
-    return db
+def Pwd2Hash(password,salt=None):
+    password = password.encode()
+    if not salt:
+        salt = base64.b64encode(os.urandom(32))
+    hashInput = hashlib.sha256(salt+password).hexdigest()
+    return hashInput,salt
 
 @webapp.route("/signup", methods = ["GET","POST"])
 def SignUp():
@@ -33,6 +29,7 @@ def SignUp():
 @webapp.route("/signup_submit",methods = ["POST"])
 def SignUpSubmit():
     error = ""
+    # check if name is valid
     if "username" in request.form:
         if request.form["username"] == "":
             error += "Please enter a username.\n"
@@ -42,18 +39,39 @@ def SignUpSubmit():
             if char not in "ABCDEFJHIJKLMNOPQRSTUVWXYZabcdefjhijklmnopqrstuvwxyz0123456789_":
                 error += "Username should only contain letters, numbers and '_'.\n"
                 break
-    session["username"] = request.form["username"]
-        
+    
+    # check if name already exsist
+    cnx = sql.get_db()
+    cursor = cnx.cursor()
+    query = ''' SELECT * FROM userInfo WHERE userName = %s '''
+    cursor.execute(query,(request.form["username"],))
+    row = cursor.fetchone()
+    if row == None:
+        session["username"] = request.form["username"]
+    else:
+        session["error"] = "Username has been taken. Please choose another name!\n"
+        return redirect(url_for("SignUp"))
+
+    # check if email is entered or taken
     if "email" in request.form:
         if request.form["email"] == "":
             error += "Please enter the email address.\n"
+    query = ''' SELECT * FROM userInfo WHERE userEmail = %s '''
+    cursor.execute(query,(request.form["email"],))
+    row = cursor.fetchone()
+    if row == None:
+        session["email"] = request.form["email"]
+    else:
+        session["error"] = "Email address has been taken. Please choose another!\n"
+        return redirect(url_for("SignUp"))
+    session["email"] = request.form["email"]
     
+    # check if password are match
     if "password" in request.form and "com_password" in request.form:
         if request.form["password"] == "" or request.form["com_password"] == "":
             error += "Please enter the password or password comfirm.\n"
         elif request.form["password"] != request.form["com_password"]:
             error += "password doesn't match the comfirm password.\n"
-    session["password"] = request.form["password"]
     
     if error != "":
         session["error"] = error
@@ -61,15 +79,15 @@ def SignUpSubmit():
     else:
         session['authenticated'] = True
         
-
-    cnx = get_db()
+    # save userinfo
+    pwd,salt = Pwd2Hash(request.form["password"], salt = None)
+    cnx = sql.get_db()
     cursor = cnx.cursor()
-
-    query = ''' INSERT INTO userinfo (user_name, user_email, user_password)
-                       VALUES (%s,%s,%s)
+    query = ''' INSERT INTO userinfo (userName, userEmail, userPwd, userSalt)
+                       VALUES (%s,%s,%s,%s)
     '''
     
-    cursor.execute(query,(session["username"],request.form["email"],request.form["password"]))
+    cursor.execute(query,(request.form["username"],request.form["email"],pwd,salt))
     cnx.commit()
 
     return redirect(url_for("HomePage"))

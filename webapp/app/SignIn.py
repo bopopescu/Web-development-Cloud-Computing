@@ -1,10 +1,18 @@
-from flask import render_template, session, url_for, request, redirect, flash
+from flask import render_template, session, url_for, request, redirect
 from app import webapp
+from app import sql
+import hashlib
+import base64
+import os
 
-# temp user table
-user_1 = {"username":"John","pwd":"123456"}
-webapp.secret_key = '\x80\xa9s*\x12\xc7x\xa9d\x1f(\x03\xbeHJ:\x9f\xf0!\xb1a\xaa\x0f\xee'
-
+def Pwd2Hash(password,salt=None):
+    password = password.encode()
+    if not salt:
+        salt = base64.b64encode(os.urandom(32))
+    else:
+        salt = salt.encode()
+    hashInput = hashlib.sha256(salt+password).hexdigest()
+    return hashInput,salt
 
 @webapp.route("/signin",methods=['GET','POST'])
 def SignIn():
@@ -23,11 +31,26 @@ def SignIn():
 
 @webapp.route("/signin_submit",methods=['POST'])
 def SignInSubmit():
-    if "username" in request.form and request.form["username"] == user_1["username"] \
-    and "password" in request.form and request.form["password"] == user_1["pwd"]:
+    cnx = sql.get_db()
+    cursor = cnx.cursor()
+    user_name = request.form["username"]
+    query = "SELECT * FROM userInfo WHERE userName = %s"
+    cursor.execute(query,(user_name,))
+    row = cursor.fetchone()
+
+    if row == None:
+        session["resubmit"] = True
+        session["error"] = "username don't exsist!"
+        return redirect(url_for("SignIn"))
+
+    currentUser = {"username":row[0],"pwd":row[2],"salt":row[3]}
+    print(type(currentUser["pwd"]),type(currentUser["salt"]))
+
+    if "username" in request.form and request.form["username"] == currentUser["username"] \
+    and "password" in request.form and Pwd2Hash(request.form["password"],currentUser["salt"])[0] == currentUser["pwd"]:
         session['authenticated'] = True
         session["username"] = request.form["username"]
-        flash("You have successfully login!")
+        session["error"] = None
         return redirect(url_for("HomePage"))
     
     if 'username' in request.form:
