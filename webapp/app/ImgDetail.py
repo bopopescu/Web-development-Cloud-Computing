@@ -3,18 +3,21 @@ from app import webapp
 import os
 from app import sql
 
-@webapp.route("/homepage/detail/<imgId>",methods = ["GET"])
+@webapp.route("/homepage/detail/<imgId>",methods = ["GET","POST"])
 def ImgDetail(imgId):
     if session["authenticated"]:
+        path ="/".join(webapp.config["UPLOAD_FOLDER"].split("/")[:-1])
+        images = []
         cnx = sql.get_db()
         cursor = cnx.cursor()
         query = "SELECT * FROM user2Images WHERE userName = %s AND Thumbnail = %s"
-        cursor.execute(query,(session["username"],imgId))
+        cursor.execute(query,(session["username"],os.path.join(path,imgId)))
         row = cursor.fetchone()
         if row == None:
             flash("Can't find images, please reupload!")
             return redirect(url_for("HomePage"))
-        images = [row[2],row[3],row[4],row[5]]
+        for i in [2,3,4,5]:
+            images.append(os.path.join(os.path.join("upload_images",session["username"]),row[i].split("/")[-1]))
         return render_template("imgdetail.html",title = session["username"],images = images)
     else:
         session["error"] = "unauthenticated log In"

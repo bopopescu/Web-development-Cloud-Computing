@@ -36,7 +36,7 @@ def SignUpSubmit():
         elif len(request.form["username"]) > 20:
             error += "The username is too long. Please retry.\n"
         for char in request.form["username"]:
-            if char not in "ABCDEFJHIJKLMNOPQRSTUVWXYZabcdefjhijklmnopqrstuvwxyz0123456789_":
+            if char not in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_":
                 error += "Username should only contain letters, numbers and '_'.\n"
                 break
     
@@ -83,12 +83,12 @@ def SignUpSubmit():
     pwd,salt = Pwd2Hash(request.form["password"], salt = None)
     cnx = sql.get_db()
     cursor = cnx.cursor()
-    query = ''' INSERT INTO userinfo (userName, userEmail, userPwd, userSalt)
+    query = ''' INSERT INTO userInfo (userName, userEmail, userPwd, userSalt)
                        VALUES (%s,%s,%s,%s)
     '''
     
     cursor.execute(query,(request.form["username"],request.form["email"],pwd,salt))
     cnx.commit()
-
+    session["error"] = None
     return redirect(url_for("HomePage"))
     

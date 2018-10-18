@@ -41,7 +41,11 @@ def ImageTransSave(filePath,fileName):
 @webapp.route("/homepage", methods=['GET', 'POST'])
 def HomePage():
     images = []
-    error = session["error"] if session["error"] else None
+    if "error" in session:
+        error = session["error"]
+    else:
+        error = None
+        session["error"] = None
     if session["authenticated"]:
         cnx = sql.get_db()
         cursor = cnx.cursor()
@@ -52,17 +56,14 @@ def HomePage():
             return render_template("homepage.html",title = session["username"],images = images, error = error)
         lens = len(row)
         for i in range(lens):
-            images.append(row[i][1])
+            file_name = row[i][1].split("/")[-1]
+            images.append(os.path.join(os.path.join("upload_images",session["username"]),file_name))
         return render_template("homepage.html",title = session["username"],images = images, error = error)
     else:
         session["error"] = "unauthenticated log In"
         return redirect(url_for("SignIn"))
 
-@webapp.route("/hompage/upload/<fp>", methods=['GET', 'POST'])
-def ShowImage(fp):
-    return send_file(fp)
-
-@webapp.route("/hompage/upload", methods=['GET', 'POST'])
+@webapp.route("/homepage/upload", methods=['GET', 'POST'])
 def UpLoad():
     if 'my_file' not in request.files:
         session["error"] = "didn't receive any file please try again!"
