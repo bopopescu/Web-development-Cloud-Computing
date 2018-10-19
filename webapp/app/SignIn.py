@@ -5,6 +5,7 @@ import hashlib
 import base64
 import os
 
+# add salt and hash the password
 def Pwd2Hash(password,salt=None):
     password = password.encode()
     if not salt:
@@ -14,6 +15,7 @@ def Pwd2Hash(password,salt=None):
     hashInput = hashlib.sha256(salt+password).hexdigest()
     return hashInput,salt
 
+# show signin page
 @webapp.route("/signin",methods=['GET','POST'])
 def SignIn():
     username = None
@@ -29,6 +31,7 @@ def SignIn():
     session["resubmit"] = False
     return render_template("signin.html",title = "ImageBay",username=username,error=error)
 
+# check if input info are valid and add login to homepage if it is 
 @webapp.route("/signin_submit",methods=['POST'])
 def SignInSubmit():
     cnx = sql.get_db()
@@ -44,7 +47,6 @@ def SignInSubmit():
         return redirect(url_for("SignIn"))
 
     currentUser = {"username":row[0],"pwd":row[2],"salt":row[3]}
-    print(type(currentUser["pwd"]),type(currentUser["salt"]))
 
     if "username" in request.form and request.form["username"] == currentUser["username"] \
     and "password" in request.form and Pwd2Hash(request.form["password"],currentUser["salt"])[0] == currentUser["pwd"]:

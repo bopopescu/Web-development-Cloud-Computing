@@ -3,6 +3,7 @@ from app import webapp
 import os
 from app import sql
 
+# to show original image and 3 trans images
 @webapp.route("/homepage/detail/<path:imgId>",methods = ["GET","POST"])
 def imgDetail(imgId):
     if session["authenticated"]:

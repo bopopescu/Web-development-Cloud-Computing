@@ -12,3 +12,4 @@ from app import LogOut
 from app import ImgDetail
 from app import sql
 from app import TestUpload
+from app import ImageProcess

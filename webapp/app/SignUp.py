@@ -5,6 +5,7 @@ import hashlib
 import base64
 import os
 
+# add salt and hash the password
 def Pwd2Hash(password,salt=None):
     password = password.encode()
     if not salt:
@@ -12,6 +13,7 @@ def Pwd2Hash(password,salt=None):
     hashInput = hashlib.sha256(salt+password).hexdigest()
     return hashInput,salt
 
+# show signup page
 @webapp.route("/signup", methods = ["GET","POST"])
 def SignUp():
     username = None
@@ -25,7 +27,7 @@ def SignUp():
         email = session["email"]
     return render_template("signup.html",title = "ImageBay", email = email, error = error, username = username)
 
-
+# check if user info are valid and submit the info 
 @webapp.route("/signup_submit",methods = ["POST"])
 def SignUpSubmit():
     error = ""

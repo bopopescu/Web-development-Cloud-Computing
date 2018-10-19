@@ -1,6 +1,7 @@
 from flask import render_template, url_for
 from app import webapp
 
+# weclome page
 #@webapp.route("/welcome")
 @webapp.route("/",methods=["GET"])
 def Welcome():
