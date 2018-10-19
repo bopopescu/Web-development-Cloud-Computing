@@ -3,8 +3,8 @@ from app import webapp
 import os
 from app import sql
 
-@webapp.route("/homepage/detail/<imgId>",methods = ["GET","POST"])
-def ImgDetail(imgId):
+@webapp.route("/homepage/detail/<path:imgId>",methods = ["GET","POST"])
+def imgDetail(imgId):
     if session["authenticated"]:
         path ="/".join(webapp.config["UPLOAD_FOLDER"].split("/")[:-1])
         images = []

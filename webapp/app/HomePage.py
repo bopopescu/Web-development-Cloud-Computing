@@ -1,4 +1,4 @@
-from flask import render_template, url_for, request, redirect, session, flash, send_file
+from flask import render_template, url_for, request, redirect, session
 from werkzeug.utils import secure_filename
 from app import webapp
 from wand.image import Image
@@ -25,7 +25,7 @@ def ImageTransSave(filePath,fileName):
             path_thumbnail = os.path.join(filePath,"thumbnail_"+fileName)
             i.save(filename=path_thumbnail)
         with img.clone() as i:
-            i.modulate(brightness = 100, saturation = 170, hue = 100)
+            i.modulate(brightness = 100, saturation = 300, hue = 100)
             path_a = os.path.join(filePath,"a_"+fileName)
             i.save(filename=path_a)
         with img.clone() as i:
@@ -62,13 +62,21 @@ def HomePage():
     else:
         session["error"] = "unauthenticated log In"
         return redirect(url_for("SignIn"))
-
+    
 @webapp.route("/homepage/upload", methods=['GET', 'POST'])
 def UpLoad():
     if 'my_file' not in request.files:
         session["error"] = "didn't receive any file please try again!"
         return redirect(url_for('HomePage'))
     myFile = request.files["my_file"]
+    cnx = sql.get_db()
+    cursor = cnx.cursor()
+    query = "SELECT * FROM user2Images WHERE userName = %s AND original = %s"
+    cursor.execute(query,(session["username"],os.path.join(os.path.join(webapp.config["UPLOAD_FOLDER"],session["username"]),myFile.filename)))
+    row = cursor.fetchone()
+    if row != None:
+        session["error"] = "Image with same name has already been uploaded!"
+        return redirect(url_for("HomePage"))
     if myFile.filename == '':
         session["error"] = "No file selected"
         return redirect(url_for('HomePage'))

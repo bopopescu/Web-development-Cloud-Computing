@@ -11,3 +11,4 @@ from app import HomePage
 from app import LogOut
 from app import ImgDetail
 from app import sql
+from app import TestUpload

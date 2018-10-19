@@ -17,7 +17,7 @@
         </form>
         <br>
         {% for img in images %}
-            <a href="{{url_for("ImgDetail",imgId = img)}}">
+            <a href="{{url_for("imgDetail",imgId = img)}}">
                 <img width='150px' height="100px" src="{{url_for("static",filename=img)}}">
             </a>
         {% endfor %}
