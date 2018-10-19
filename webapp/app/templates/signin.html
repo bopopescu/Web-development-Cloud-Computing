@@ -1,20 +1,13 @@
 <html>
     <head>
         <title>{{title}} - Sign In</title>
-        <style>
-            .bgimg {
-                    background-image: "{{ image }}";
-                    background-repeat: no-repeat;
-                    background-size: 100% 100%;
-                }
-        </style>
     </head>
     
     <body>
         <div style="width:50%; float:left;"><a href="{{url_for('Welcome')}}">ImageBay</a></div>
         <div style="text-align:right;width:50%; float:right;"><a href="{{url_for('SignIn')}}">Sign In</a> or <a href="{{url_for('SignUp')}}">Sign Up</a></div>        
         <hr style="border-style:inset; border-width:2px;">
-        <div class="bgimg">
+        <div>
         <br><br><br>
         <div style = "text-align: center;">{{ error if error != None else " " }}</div>
         <br><br>
