@@ -3,4 +3,4 @@ db_config = {'user': 'root',
              'host':'127.0.0.1',
              'database': 'Test'}
 
-s3_bucketname = "ece1779a2john"
+s3_bucketname = "webapp1779"

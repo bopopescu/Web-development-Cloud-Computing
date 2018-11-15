@@ -24,10 +24,11 @@ def HomePage():
         if row == None:
             return render_template("homepage.html",title = session["username"],images = images, error = error)
         lens = len(row)
+        print(row)
         for i in range(lens):
             # file_name = row[i][1].split("/")[-1]
-            print(row)
             images.append(row[i][1])
+        print(images)
         return render_template("homepage.html",title = session["username"],images = images, error = error)
     else:
         session["error"] = "unauthenticated log In"
@@ -58,7 +59,7 @@ def UpLoad():
         filename = secure_filename(myFile.filename)
         path_original = os.path.join(userPath,filename)
         myFile.save(path_original)
-        path_origin, path_thumbnail,path_a,path_b,path_c = ImageProcess.ImageTransSave(userPath, filename)
+        path_origin, path_thumbnail,path_a,path_b,path_c = ImageProcess.ImageTransSave(session['username'],userPath, filename)
         ImageProcess.DBImageSave(session["username"],path_thumbnail,path_origin,path_a,path_b,path_c)
         session["error"] = None
         return redirect(url_for('HomePage')) 

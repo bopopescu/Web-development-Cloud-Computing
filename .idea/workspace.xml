@@ -2,51 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="791d6e3b-d082-40ff-8a8f-738f2ed3c207" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Web-development-Cloud-Computing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Web-development-Cloud-Computing.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/app/HomePage.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app/HomePage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/app/ImageProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app/ImageProcess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/ImgDetail.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app/ImgDetail.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/app/SignUp.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app/SignUp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/Flowers_II_by_Ashatay.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/Fragile_Flowers_by_Earthmagic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/Jour_de_pluie_Rainy_day_by_Julie1226.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/StillLife_Flowers_2_by_love1008.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/a_Flowers_II_by_Ashatay.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/a_Fragile_Flowers_by_Earthmagic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/a_Jour_de_pluie_Rainy_day_by_Julie1226.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/a_StillLife_Flowers_2_by_love1008.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/a_cherryflowersnew.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/a_download.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/a_giorgio-chiellini-juventus-serie-a-23092017_yqvjej552de81ocl7eefga81r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/b_Flowers_II_by_Ashatay.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/b_Fragile_Flowers_by_Earthmagic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/b_Jour_de_pluie_Rainy_day_by_Julie1226.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/b_StillLife_Flowers_2_by_love1008.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/b_cherryflowersnew.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/b_download.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/b_giorgio-chiellini-juventus-serie-a-23092017_yqvjej552de81ocl7eefga81r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/c_Flowers_II_by_Ashatay.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/c_Fragile_Flowers_by_Earthmagic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/c_Jour_de_pluie_Rainy_day_by_Julie1226.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/c_StillLife_Flowers_2_by_love1008.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/c_cherryflowersnew.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/c_download.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/c_giorgio-chiellini-juventus-serie-a-23092017_yqvjej552de81ocl7eefga81r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/cherryflowersnew.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/download.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/giorgio-chiellini-juventus-serie-a-23092017_yqvjej552de81ocl7eefga81r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/thumbnail_Flowers_II_by_Ashatay.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/thumbnail_Fragile_Flowers_by_Earthmagic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/thumbnail_Jour_de_pluie_Rainy_day_by_Julie1226.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/thumbnail_StillLife_Flowers_2_by_love1008.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/thumbnail_cherryflowersnew.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/thumbnail_download.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/static/upload_images/hhh/thumbnail_giorgio-chiellini-juventus-serie-a-23092017_yqvjej552de81ocl7eefga81r.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app/templates/homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app/templates/imgdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app/templates/imgdetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/run.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,26 +15,38 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Web_development_Cloud_Computing$run.coverage" NAME="run Coverage Results" MODIFIED="1542250812947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webapp" />
+    <SUITE FILE_PATH="coverage/Web_development_Cloud_Computing$run.coverage" NAME="run Coverage Results" MODIFIED="1542258860899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webapp" />
   </component>
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/app/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="75">
+              <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Welcome.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Welcome.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/app/Welcome.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+            <state relative-caret-position="120">
+              <caret line="8" column="62" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SignUp.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/app/SignUp.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1037">
+              <caret line="87" column="22" lean-forward="true" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#72#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,17 +55,20 @@
       <file leaf-file-name="HomePage.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/app/HomePage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-448">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="92">
+              <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#70#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageProcess.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ImageProcess.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webapp/app/ImageProcess.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="73" column="16" lean-forward="true" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
+            <state relative-caret-position="120">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -105,8 +79,8 @@
       <file leaf-file-name="ImgDetail.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/app/ImgDetail.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+            <state relative-caret-position="210">
+              <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
               <folding>
                 <element signature="e#0#88#0" expanded="true" />
               </folding>
@@ -118,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/webapp/app/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -139,6 +113,7 @@
       <find>cnx.cursor</find>
       <find>src</find>
       <find>DBImageSave</find>
+      <find>ImageProcess</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -151,11 +126,12 @@
         <option value="$PROJECT_DIR$/webapp/app/__init__.py" />
         <option value="$PROJECT_DIR$/webapp/app/templates/homepage.html" />
         <option value="$PROJECT_DIR$/webapp/app/templates/imgdetail.html" />
-        <option value="$PROJECT_DIR$/webapp/app/config.py" />
-        <option value="$PROJECT_DIR$/webapp/app/ImageProcess.py" />
         <option value="$PROJECT_DIR$/webapp/app/ImgDetail.py" />
-        <option value="$PROJECT_DIR$/webapp/app/HomePage.py" />
         <option value="$PROJECT_DIR$/webapp/app/TestUpload.py" />
+        <option value="$PROJECT_DIR$/webapp/app/config.py" />
+        <option value="$PROJECT_DIR$/webapp/app/SignUp.py" />
+        <option value="$PROJECT_DIR$/webapp/app/HomePage.py" />
+        <option value="$PROJECT_DIR$/webapp/app/ImageProcess.py" />
       </list>
     </option>
   </component>
@@ -165,11 +141,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="243" />
-    <option name="y" value="157" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="573" />
+    <option name="y" value="83" />
     <option name="width" value="1388" />
-    <option name="height" value="890" />
+    <option name="height" value="918" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -281,17 +257,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="243" y="157" width="1388" height="890" extended-state="0" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4117647" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1762295" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
       <window_info anchor="bottom" id="Terminal" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3335735" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24959569" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="SciView" />
@@ -335,44 +311,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/app/HomePage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-448">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/app/ImageProcess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="73" column="16" lean-forward="true" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/app/ImgDetail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webapp/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/app/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -385,10 +327,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webapp/app/Welcome.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+        <state relative-caret-position="120">
+          <caret line="8" column="62" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/app/ImgDetail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/app/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/app/SignUp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="87" column="22" lean-forward="true" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/app/HomePage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/app/ImageProcess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
