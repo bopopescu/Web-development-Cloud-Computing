@@ -24,11 +24,9 @@ def HomePage():
         if row == None:
             return render_template("homepage.html",title = session["username"],images = images, error = error)
         lens = len(row)
-        print(row)
         for i in range(lens):
             # file_name = row[i][1].split("/")[-1]
             images.append(row[i][1])
-        print(images)
         return render_template("homepage.html",title = session["username"],images = images, error = error)
     else:
         session["error"] = "unauthenticated log In"
