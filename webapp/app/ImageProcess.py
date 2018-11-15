@@ -24,12 +24,12 @@ def allowed_file(filename):
 # save images to local file system
 def ImageTransSave(username,filePath,fileName):
     with Image(filename = os.path.join(filePath,fileName)) as img:
-        with img.clone() as i:
-            path_origin = os.path.join(filePath,fileName)
-            i.save(filename=path_origin)
-            upload_to_s3(path_origin,config.s3_bucketname, '%s/%s' % (username, fileName))
-            os.remove(path_origin)
-            path_origin = os.path.join(S3_ADDRESS,'%s/%s' % (username, fileName))
+        # with img.clone() as i:
+        path_origin = os.path.join(filePath,fileName)
+        # i.save(filename=path_origin)
+        upload_to_s3(path_origin,config.s3_bucketname, '%s/%s' % (username, fileName))
+        os.remove(path_origin)
+        path_origin = os.path.join(S3_ADDRESS,'%s/%s' % (username, fileName))
         with img.clone() as i:
             i.resize(width = 150,height = 100)
             path_thumbnail = os.path.join(filePath,"thumbnail_"+fileName)
@@ -61,13 +61,13 @@ def ImageTransSave(username,filePath,fileName):
             upload_to_s3(path_c,config.s3_bucketname,'%s/%s' % (username, "c_"+fileName))
             os.remove(path_c)
             path_c = os.path.join(S3_ADDRESS,'%s/%s' % (username, "c_"+fileName))
-
+        os.rmdir(filePath)
     return path_origin,path_thumbnail,path_a,path_b,path_c
 
-def upload_to_s3(filepath, bucketname, filename):
+def upload_to_s3(filepath, bucketname, filename,acl="public-read"):
     s3 = boto3.client('s3')
     try:
-        s3.upload_file(filepath, bucketname, filename)
+        s3.upload_file(filepath, bucketname, filename,ExtraArgs={'ACL':acl})
     except Exception as e:
         print("upload fail")
         return e
