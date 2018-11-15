@@ -1,7 +1,6 @@
 from flask import render_template, url_for, request, redirect, session
 from werkzeug.utils import secure_filename
 from app import webapp
-from wand.image import Image
 import os
 from app import sql
 from app import ImageProcess
@@ -20,13 +19,15 @@ def HomePage():
         cursor = cnx.cursor()
         query = "SELECT * FROM user2Images WHERE userName = %s"
         cursor.execute(query,(session["username"],))
+
         row = cursor.fetchall()
         if row == None:
             return render_template("homepage.html",title = session["username"],images = images, error = error)
         lens = len(row)
         for i in range(lens):
-            file_name = row[i][1].split("/")[-1]
-            images.append(os.path.join(os.path.join("upload_images",session["username"]),file_name))
+            # file_name = row[i][1].split("/")[-1]
+            print(row)
+            images.append(row[i][1])
         return render_template("homepage.html",title = session["username"],images = images, error = error)
     else:
         session["error"] = "unauthenticated log In"
@@ -57,8 +58,8 @@ def UpLoad():
         filename = secure_filename(myFile.filename)
         path_original = os.path.join(userPath,filename)
         myFile.save(path_original)
-        path_thumbnail,path_a,path_b,path_c = ImageProcess.ImageTransSave(userPath, filename)
-        ImageProcess.DBImageSave(session["username"],path_thumbnail,path_original,path_a,path_b,path_c)
+        path_origin, path_thumbnail,path_a,path_b,path_c = ImageProcess.ImageTransSave(userPath, filename)
+        ImageProcess.DBImageSave(session["username"],path_thumbnail,path_origin,path_a,path_b,path_c)
         session["error"] = None
         return redirect(url_for('HomePage')) 
     else:
