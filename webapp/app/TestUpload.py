@@ -38,8 +38,11 @@ def testUploadSubmit():
         filename = secure_filename(myFile.filename)
         path_original = os.path.join(userPath,filename)
         myFile.save(path_original)
-        path_thumbnail,path_a,path_b,path_c = ImageProcess.ImageTransSave(userPath, filename)
-        ImageProcess.DBImageSave(request.form["userID"],path_thumbnail,path_original,path_a,path_b,path_c)
+        path_origin, path_thumbnail,path_a,path_b,path_c = ImageProcess.ImageTransSave(session['username'],userPath, filename)
+        ImageProcess.DBImageSave(request.form["userID"],path_thumbnail,path_origin,path_a,path_b,path_c)
+
+        # path_origin，path_thumbnail,path_a,path_b,path_c = ImageProcess.ImageTransSave(userPath, filename)
+        # ImageProcess.DBImageSave(request.form["userID"],path_thumbnail,path_original,path_a,path_b,path_c)
         session["error"] = "the file has been uploaded!"
         return redirect(url_for("testUpload")) 
     else:
