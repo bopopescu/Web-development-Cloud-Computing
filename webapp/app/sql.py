@@ -7,6 +7,7 @@ def connect_to_database():
     return mysql.connector.connect(user=config.db_config['user'],
                                    password=config.db_config['password'],
                                    host=config.db_config['host'],
+                                   port=config.db_config['port'],
                                    database=config.db_config['database'])
 
 # init the database

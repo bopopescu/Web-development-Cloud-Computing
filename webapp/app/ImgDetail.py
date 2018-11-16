@@ -11,7 +11,7 @@ def imgDetail(imgId):
         cnx = sql.get_db()
         cursor = cnx.cursor()
         query = "SELECT * FROM user2Images WHERE userName = %s AND Thumbnail = %s"
-        cursor.execute(query,(session["username"],os.path.join(imgId)))
+        cursor.execute(query,(session["username"],imgId))
         row = cursor.fetchone()
         if row == None:
             flash("Can't find images, please reupload!")

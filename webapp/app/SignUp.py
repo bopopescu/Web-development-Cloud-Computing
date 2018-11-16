@@ -4,7 +4,7 @@ from app import sql
 import hashlib
 import base64
 import os
-import config
+from app import config
 import boto3
 
 # add salt and hash the password
@@ -90,16 +90,18 @@ def SignUpSubmit():
     query = ''' INSERT INTO userInfo (userName, userEmail, userPwd, userSalt)
                        VALUES (%s,%s,%s,%s)
     '''
+    
     cursor.execute(query,(request.form["username"],request.form["email"],pwd,salt))
     cnx.commit()
-    create_file(session['username']+'/')
+    create_file(session["username"]+'/')
     session["error"] = None
     return redirect(url_for("HomePage"))
 
 def create_file(username):
-    s3_client = boto3.client('s3')
+    s3_client = boto3.client('s3',**config.aws_connection_args)
     try:
         response = s3_client.put_object(Bucket=config.s3_bucketname, Key=username)
     except Exception as e:
         print("create fail")
         return e
+    

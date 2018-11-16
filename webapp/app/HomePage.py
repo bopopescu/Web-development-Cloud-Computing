@@ -1,6 +1,7 @@
 from flask import render_template, url_for, request, redirect, session
 from werkzeug.utils import secure_filename
 from app import webapp
+from wand.image import Image
 import os
 from app import sql
 from app import ImageProcess
@@ -24,9 +25,11 @@ def HomePage():
         if row == None:
             return render_template("homepage.html",title = session["username"],images = images, error = error)
         lens = len(row)
+        print(row)
         for i in range(lens):
             # file_name = row[i][1].split("/")[-1]
             images.append(row[i][1])
+        print(images)
         return render_template("homepage.html",title = session["username"],images = images, error = error)
     else:
         session["error"] = "unauthenticated log In"

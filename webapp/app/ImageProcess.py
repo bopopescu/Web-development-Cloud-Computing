@@ -5,7 +5,7 @@ import boto3
 from app import config
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
-S3_ADDRESS = "https://s3.amazonaws.com/webapp1779/"
+S3_ADDRESS = "https://s3.amazonaws.com/ece1779a2john/"
 
 # save path info in database
 def DBImageSave(userName,thumbnail,original,trans_a,trans_b,trans_c):
@@ -65,9 +65,5 @@ def ImageTransSave(username,filePath,fileName):
     return path_origin,path_thumbnail,path_a,path_b,path_c
 
 def upload_to_s3(filepath, bucketname, filename,acl="public-read"):
-    s3 = boto3.client('s3')
-    try:
-        s3.upload_file(filepath, bucketname, filename,ExtraArgs={'ACL':acl})
-    except Exception as e:
-        print("upload fail")
-        return e
+    s3 = boto3.client('s3',**config.aws_connection_args)
+    s3.upload_file(filepath, bucketname, filename, ExtraArgs={'ACL':acl})
