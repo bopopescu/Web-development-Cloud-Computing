@@ -63,6 +63,7 @@ def SignUpSubmit():
     query = ''' SELECT * FROM userInfo WHERE userEmail = %s '''
     cursor.execute(query,(request.form["email"],))
     row = cursor.fetchone()
+    sql.close_db()
     if row == None:
         session["email"] = request.form["email"]
     else:
@@ -93,12 +94,13 @@ def SignUpSubmit():
     
     cursor.execute(query,(request.form["username"],request.form["email"],pwd,salt))
     cnx.commit()
+    sql.close_db()
     create_file(session["username"]+'/')
     session["error"] = None
     return redirect(url_for("HomePage"))
 
 def create_file(username):
-    s3_client = boto3.client('s3')
+    s3_client = boto3.client('s3',**config.aws_connection_args)
     try:
         response = s3_client.put_object(Bucket=config.s3_bucketname, Key=username)
     except Exception as e:

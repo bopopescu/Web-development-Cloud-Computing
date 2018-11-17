@@ -5,6 +5,8 @@ from wand.image import Image
 from app import ImageProcess
 import os
 from app import sql
+from app import config
+
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 # show test page
@@ -26,8 +28,10 @@ def testUploadSubmit():
     cnx = sql.get_db()
     cursor = cnx.cursor()
     query = "SELECT * FROM user2Images WHERE userName = %s AND original = %s"
-    cursor.execute(query,(request.form["userID"],os.path.join(os.path.join(webapp.config["UPLOAD_FOLDER"],request.form["userID"]),myFile.filename)))
+    myFile_link = config.S3_ADDRESS + request.form['userID'] + '/' + myFile.filename
+    cursor.execute(query,(request.form["userID"], myFile_link))
     row = cursor.fetchone()
+    sql.close_db()
     if row != None:
         session["error"] = "Image with same name has already been uploaded!"
         return redirect(url_for("testUpload"))
@@ -47,5 +51,4 @@ def testUploadSubmit():
         return redirect(url_for("testUpload")) 
     else:
         session["error"] = "can not recognize the file, please reupload"
-        return redirect(url_for("testUpload"))
-    
+        return redirect(url_for("testUpload"))    

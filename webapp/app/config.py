@@ -5,6 +5,7 @@ db_config = {'user': 'remoteuser',
              'database': 'Test'}
 
 s3_bucketname = "ece1779a2john"
+S3_ADDRESS = "https://s3.amazonaws.com/ece1779a2john/"
 
 aws_connection_args = {
     'aws_access_key_id':'AKIAJERDRE2XLXFI3HOA',

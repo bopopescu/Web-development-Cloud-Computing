@@ -50,6 +50,7 @@ def SignUpSubmit():
     query = ''' SELECT * FROM userInfo WHERE userName = %s '''
     cursor.execute(query,(request.form["username"],))
     row = cursor.fetchone()
+    sql.close_db()
     if row == None:
         session["username"] = request.form["username"]
     else:
@@ -60,9 +61,12 @@ def SignUpSubmit():
     if "email" in request.form:
         if request.form["email"] == "":
             error += "Please enter the email address.\n"
+    cnx = sql.get_db()
+    cursor = cnx.cursor()
     query = ''' SELECT * FROM userInfo WHERE userEmail = %s '''
     cursor.execute(query,(request.form["email"],))
     row = cursor.fetchone()
+    sql.close_db()
     if row == None:
         session["email"] = request.form["email"]
     else:
@@ -93,6 +97,7 @@ def SignUpSubmit():
     
     cursor.execute(query,(request.form["username"],request.form["email"],pwd,salt))
     cnx.commit()
+    sql.close_db()
     create_file(session["username"]+'/')
     session["error"] = None
     return redirect(url_for("HomePage"))

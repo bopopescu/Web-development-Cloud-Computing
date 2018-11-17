@@ -5,11 +5,13 @@ from wand.image import Image
 import os
 from app import sql
 from app import ImageProcess
+from app import config
 
 # show personal homepage
 @webapp.route("/homepage", methods=['GET', 'POST'])
 def HomePage():
     images = []
+# check if user info are valid and sub
     if "error" in session:
         error = session["error"]
     else:
@@ -22,6 +24,7 @@ def HomePage():
         cursor.execute(query,(session["username"],))
 
         row = cursor.fetchall()
+        sql.close_db()
         if row == None:
             return render_template("homepage.html",title = session["username"],images = images, error = error)
         lens = len(row)
@@ -45,8 +48,10 @@ def UpLoad():
     cnx = sql.get_db()
     cursor = cnx.cursor()
     query = "SELECT * FROM user2Images WHERE userName = %s AND original = %s"
-    cursor.execute(query,(session["username"],os.path.join(os.path.join(webapp.config["UPLOAD_FOLDER"],session["username"]),myFile.filename)))
+    myFile_link = config.S3_ADDRESS + session['username'] + '/' + myFile.filename
+    cursor.execute(query,(session["username"], myFile_link))
     row = cursor.fetchone()
+    sql.close_db()
     if row != None:
         session["error"] = "Image with same name has already been uploaded!"
         return redirect(url_for("HomePage"))

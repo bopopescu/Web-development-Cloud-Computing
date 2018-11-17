@@ -13,6 +13,7 @@ def imgDetail(imgId):
         query = "SELECT * FROM user2Images WHERE userName = %s AND Thumbnail = %s"
         cursor.execute(query,(session["username"],imgId))
         row = cursor.fetchone()
+        sql.close_db()
         if row == None:
             flash("Can't find images, please reupload!")
             return redirect(url_for("HomePage"))
